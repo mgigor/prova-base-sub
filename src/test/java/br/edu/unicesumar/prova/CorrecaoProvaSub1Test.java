@@ -395,12 +395,13 @@ class CorrecaoProvaSub1Test {
     }
 
     private double corrigirExercicio10() {
+
         Map<BooleanSupplier, Double> avaliacao = new HashMap<>();
 
         try {
             String json = IOUtils.toString(
                     ProvaApplication.class.getResource("sub1/questao10.json"),
-                    "UTF-8");
+                    "UTF-8");  
 
             avaliacao.put(() -> {
                 try {
@@ -426,7 +427,8 @@ class CorrecaoProvaSub1Test {
                 }
             }, 0.7);
 
-        } catch (IOException e) {
+        } catch (Exception e) {
+            e.printStackTrace();
             return 0;
         }
 
