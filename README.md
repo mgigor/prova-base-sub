@@ -9,3 +9,6 @@ chmod +x mvnw
 
 # SUB 2
 ./mvnw -Dtest=CorrecaoProvaSub2Test test
+
+# UPDATE JAVA
+sdk install java 18.0.1.fx-zulu
