@@ -2,6 +2,7 @@ package br.edu.unicesumar.prova;
 
 import static br.edu.unicesumar.prova.CorrecaoService.round;
 
+import java.io.FileInputStream;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -24,6 +25,7 @@ import org.springframework.amqp.core.Binding.DestinationType;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.util.StringUtils;
 
 import br.edu.unicesumar.prova.sub2.amqp.RabbitStartup;
@@ -350,9 +352,7 @@ class CorrecaoProvaSub2Test {
 
     private double corrigirExercicio09() {
         try {
-            String context = IOUtils.toString(
-                    ProvaApplication.class.getResource("sub2/questao09.puml"),
-                    "UTF-8");
+            String context = IOUtils.toString(new FileInputStream(new ClassPathResource("sub1/questao09.json").getFile()), "UTF-8");
 
             Map<BooleanSupplier, Double> avaliacao = new HashMap<>();
 
@@ -370,9 +370,7 @@ class CorrecaoProvaSub2Test {
 
     private double corrigirExercicio10() {
         try {
-            String file = IOUtils.toString(
-                    ProvaApplication.class.getResource("sub2/questao10.puml"),
-                    "UTF-8");
+            String file = IOUtils.toString(new FileInputStream(new ClassPathResource("sub1/questao10.json").getFile()), "UTF-8");
 
             final String container = file.replaceAll("C4_Container", "");
 

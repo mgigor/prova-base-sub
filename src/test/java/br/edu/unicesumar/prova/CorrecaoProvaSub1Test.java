@@ -6,7 +6,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 
-import java.io.IOException;
+import java.io.FileInputStream;
 import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -36,6 +36,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpStatus;
@@ -399,9 +400,7 @@ class CorrecaoProvaSub1Test {
         Map<BooleanSupplier, Double> avaliacao = new HashMap<>();
 
         try {
-            String json = IOUtils.toString(
-                    ProvaApplication.class.getResource("sub1/questao10.json"),
-                    "UTF-8");  
+            String json = IOUtils.toString(new FileInputStream(new ClassPathResource("sub1/questao10.json").getFile()), "UTF-8");
 
             avaliacao.put(() -> {
                 try {
