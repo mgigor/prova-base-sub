@@ -352,7 +352,7 @@ class CorrecaoProvaSub2Test {
 
     private double corrigirExercicio09() {
         try {
-            String context = IOUtils.toString(new FileInputStream(new ClassPathResource("sub1/questao09.json").getFile()), "UTF-8");
+            String context = IOUtils.toString(new FileInputStream(new ClassPathResource("sub2/questao09.puml").getFile()), "UTF-8");
 
             Map<BooleanSupplier, Double> avaliacao = new HashMap<>();
 
@@ -370,7 +370,7 @@ class CorrecaoProvaSub2Test {
 
     private double corrigirExercicio10() {
         try {
-            String file = IOUtils.toString(new FileInputStream(new ClassPathResource("sub1/questao10.json").getFile()), "UTF-8");
+            String file = IOUtils.toString(new FileInputStream(new ClassPathResource("sub2/questao10.puml").getFile()), "UTF-8");
 
             final String container = file.replaceAll("C4_Container", "");
 
